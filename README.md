@@ -1,11 +1,11 @@
-# TRABALHO 01:  Título do Trabalho
+# TRABALHO 01:  Feed Politico
 Trabalho desenvolvido durante a disciplina de BD1
 
 # Sumário
 
 ### 1. COMPONENTES<br>
 Integrantes do grupo<br>
-primeiro_componente_do_grupo:email_primeiro_componente@dominio.com<br>
+primeiro_componente_do_grupo:higorkd@gmail.com<br>
 segundo_componente_do_grupo:email_segundo_componente@dominio.com<br>
 ...<br>
 
