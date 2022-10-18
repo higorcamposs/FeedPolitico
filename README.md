@@ -4,7 +4,7 @@ Trabalho desenvolvido durante a disciplina de BD1
 # Sumário
 
 ### 1. COMPONENTES<br>
-Integrantes do grupo<br>
+Integrantes do grupo:<br>
 Hanna Leticia: hannaleticia91@gmail.com<br>
 Higor Campos: higorkd@gmail.com<br>
 Lucas Cunha: lucas_cunha_souza@hotmail.com<br>
