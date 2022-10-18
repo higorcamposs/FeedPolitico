@@ -5,9 +5,9 @@ Trabalho desenvolvido durante a disciplina de BD1
 
 ### 1. COMPONENTES<br>
 Integrantes do grupo<br>
-primeiro_componente_do_grupo:hannaleticia91@gmail.com<br>
-segundo_componente_do_grupo:higorkd@gmail.com<br>
-terceiro_componente_do_grupo:lucas_cunha_souza@hotmail.com<br>
+Hanna Leticia: hannaleticia91@gmail.com<br>
+Higor Campos: higorkd@gmail.com<br>
+Lucas Cunha: lucas_cunha_souza@hotmail.com<br>
 <br>
 
 ### 2.INTRODUÇÃO E MOTIVAÇÃO<br>
