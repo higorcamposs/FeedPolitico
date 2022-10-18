@@ -8,7 +8,7 @@ Integrantes do grupo<br>
 primeiro_componente_do_grupo:hannaleticia91@gmail.com<br>
 segundo_componente_do_grupo:higorkd@gmail.com<br>
 terceiro_componente_do_grupo:lucas_cunha_souza@hotmail.com<br>
-...<br>
+<br>
 
 ### 2.INTRODUÇÃO E MOTIVAÇÃO<br>
 Este documento contém a especificação do projeto do banco de dados <nome do projeto> 
