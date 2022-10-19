@@ -36,7 +36,7 @@ Sugestão: https://balsamiq.com/products/mockups/<br>
 #### 4.2 QUAIS PERGUNTAS PODEM SER RESPONDIDAS COM O SISTEMA PROPOSTO?
     
 > O sistema Feed Político precisa inicialmente das seguintes informações:
-* Informações sobre propostas legislativas. As propostas legislativas devem conter tipo, identificador, nome do criador, nomes de quem votou contra e a favor, descrição e status. Os tipos podem ser projetos de lei, propostas de emenda constitucional e medida provisória. O status da proposta é “instaurada” ou “não instaurada”;
+* Informações sobre propostas legislativas. As propostas legislativas devem conter tipo, identificador, nome do criador, nomes de quem votou contra e a favor, descrição e status. Os tipos podem ser projetos de lei, propostas de emenda constitucional e medida provisória. O status da proposta é “instaurada”, “não instaurada” ou "em trâmite";
 * Informações sobre políticos. Os políticos devem ser deputados, senadores, governadores e presidentes. Cada político, independente do tipo, devem conter nome, nível de mandato, cargo, partido, quais comissões faz parte, quantidade de mandatos, e estado em que foi eleito;
 * Informações sobre comissões, que devem conter participantes e se é temporária ou permanente;
 * Informações sobre a Câmara, que contém o nome do presidente da Câmara, nome dos vice-presidentes, nome dos secretários e suplentes de secretário, e quais partidos participam;
