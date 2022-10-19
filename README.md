@@ -19,7 +19,7 @@ Este documento contém a especificação do projeto para banco de dados, com tem
 
 O sistema proposto para o Feed Politico conterá as informacões aqui detalhadas.<br>
 
-> Dos politicos serão armazenados o nome, nivel de mandato, cargo politico, comissôes, votos que fez para propostas legislativas, quantidade de mandatados, ano do mandato, estado de atuação, descrição. Dos Partidos serão armazenados o número, nome, fundadores, cláusula barreira, ano de criação, principios, resumo sobre a história. Da Câmara serão armazenados o presidente, os vices, os secretários e os subsecretários.
+> Dos politicos serão armazenados o nome, nivel de mandato, cargo politico, comissôes, votos que fez para propostas legislativas, fim do mandatado, ano do mandato, estado de atuação, descrição. Dos Partidos serão armazenados o número, nome, fundadores, cláusula barreira, ano de criação, principios, resumo sobre a história. Da Câmara serão armazenados o presidente, os vices, os secretários e os subsecretários.
 > 
 >  
 >   
