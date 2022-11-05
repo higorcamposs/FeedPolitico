@@ -26,19 +26,16 @@ O sistema proposto para o Feed Politico conterá as informacões aqui detalhadas
 ![Alt text](https://github.com/higorcamposs/FeedPolitico/blob/master/images/capa_feedpolitico.png?raw=true "Capa Feed Politico")<br>
 ![Feed Politico](https://github.com/higorcamposs/FeedPolitico/blob/master/arquivos/feedpolitico_v2.pdf "Feed Politico")<br>
 ![Arquivo PDF do Protótipo Balsamiq para download feito para desenvolvimento do sistema de Feed Politico](https://github.com/higorcamposs/FeedPolitico/blob/master/arquivos/feedpolitico_v2.pdf?raw=true "Feed Politico")
+
+
 #### 4.2 QUAIS PERGUNTAS PODEM SER RESPONDIDAS COM O SISTEMA PROPOSTO?
     
-> O sistema Feed Político precisa inicialmente das seguintes informações:
-* Informações sobre propostas legislativas. As propostas legislativas devem conter tipo, identificador, nome do criador, nomes de quem votou contra e a favor, descrição e status. Os tipos podem ser projetos de lei, propostas de emenda constitucional e medida provisória. O status da proposta é “instaurada”, “não instaurada” ou "trâmite";
-* Informações sobre políticos. Os políticos devem ser deputados, senadores, governadores e presidentes. Cada político, independente do tipo, devem conter nome, nível de mandato, cargo, partido, quais comissões faz parte, quantidade de mandatos, e estado em que foi eleito;
-* Informações sobre comissões, que devem conter participantes e se é temporária ou permanente;
-* Informações sobre a Câmara, que contém o nome do presidente da Câmara, nome dos vice-presidentes, nome dos secretários e suplentes de secretário, e quais partidos participam;
-* Informações sobre partidos. Os partidos devem conter nome, integrantes, fundador(es), descrição e ano que foi fundado.
-* Informações sobre os clientes, bem como a média das idades que mais acompanham propostas políticas, principais estados, propostas legislativas mais acompanhadas, médias por acompanhamento de proposta e por político que propôs. 
-* Informações sobre tipo de propostas legislativas, como por exemplo a quantidade de propostas por tipo, média de aprovação daquele tipo de proposta, interesse dos clientes em acompanhar determinado tipo de proposta, interesse dos políticos em votar no tipo de proposta referente. 
-* Informações sobre as unidades federativas, quais possuem mais políticos, quantidade por tipo dos cargos, partidos predominantes, com mais políticos exercendo ou mais mandatos efetuados.
- 
-
+> O sistema Feed Político precisa inicialmente dos seguintes relatórios:
+* Relatório que mostre o nome de cada patido e a quantidade de políticos do sexo feminino por partido.
+* Relatório que mostre o tipo de proposta legislativa e a quantidade de clientes que a acompanham. 
+* Relatório que mostre as informações relacionadas a todos os políticos inseridos no sistema. O resultado deve conter identificador, nome, sexo, nome do cargo, nível do cargo, nome do partido que participa, início do mandato e fim do mandato.  
+* Relatório que mostre o nome e o tipo da proposta, e a média de aprovação por tipo. 
+* Relatório que mostre o nomde de cada político e identificador dos políticos que eles moderam.
  
  
 #### 4.3 TABELA DE DADOS DO SISTEMA:    
