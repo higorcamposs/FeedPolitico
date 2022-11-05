@@ -56,15 +56,65 @@ O sistema proposto para o Feed Politico conterá as informacões aqui detalhadas
     [Grupo02]: [Nomes dos que participaram na avaliação]
 
 #### 5.2 Descrição dos dados 
-    
-    
-    
-    [objeto]: [descrição do objeto]
-    
-    EXEMPLO:
-    CLIENTE: Tabela que armazena as informações relativas ao cliente<br>
-    CPF: campo que armazena o número de Cadastro de Pessoa Física para cada cliente da empresa.<br>
 
+    TIPO_PROPOSTA: Tabela que armazena dados relativos ao tipo de proposta legislativa.
+    descrição: campo que contém escrito a descrição do tipo da proposta.
+
+    PROPOSTA_LEGISLATIVA: Tabela que armazena dados relativos as especificações da proposta legislativa. 
+    resumo: campo que contém um breve resumo sobre a proposta, com informações descrevendo o assunto, autor, data.
+    status: campo que armazena a situação da proposta, que pode ser: REJEITADA, APROVADA ou ARQUIVADA. 
+
+    CLIENTE: Tabela que armazena os dados referentes aos clientes.
+    e-mail: campo que armazena o e-mail do cliente.
+    senha: campo que armazena a senha para acesso ao sistema. 
+    nascimento: campo que armazena o dia do nascimento do cliente, com objetivo de saber a idade. 
+
+    COMISSAO: Tabela que armazena dados sobre Comissões.
+    nome: campo que contém o nome da Comissão
+    periodo: campo que armazena o período de comissão, em meses.
+
+    PARTIDO: Tabela que armazena dados referentes aos partidos.
+    nome: campo que armazena a sigla pela qual o partido é referenciado. 
+    ano_fundacao: campo que armazena a data de criação do partido.
+    descricao: campo que contém descrito o significado da sigla.
+
+    UF: Tabela que armazena dados referentes aos estados brasileiros.
+    abreviacao: campo que armazena sigla que representa o estado.
+    nome: campo que armazena o nome do estado.
+    sede_governo: campo que armazena o local que seria a sede política daquele estado.
+
+    POLITICO: Tabela que armazena dados referentes aos políticos. 
+    sexo: campo que contém a definição de gênero do político.
+    nome: campo que contém o nome completo do político. 
+
+    CARGO: Tabela que armazena dados referentes aos políticos
+    nome: campo que contém o nome do cargo que o político pode assumir
+
+    TIPO_VOTO: Tabela que armazena dados referentes a descrição dos votos de políticos para propostas legislativas
+    tipo_votos: campo que armazena o nome referente as fases das ações tomadas
+    tipo_de_proposicao: campo que armazena a ação
+    data: campo que armazena a data da alteração
+    autor: campo que armazena o nome do sujeito a tomar a ação
+    descricao: campo que armazena um resumo sobre a ação referente
+
+    ACOMPANHA: Tabela que armazena dados referentes a relação entre clientes e propostas legislativas.
+    data: campo que armazena a data selecionada para acompanhar as propostas legislativas.
+
+    DISCUTIDA: Tabela que armazena dados referentes a relação entre comissão e propostas legislativas
+    data_inicio: campo que armazena a data inicial a qual a comissão adotou a discussão sobre alguma proposta legislativa
+    data_fim: campo que armazena a data final a qual a comissão encerrou a discussão sobre alguma proposta legislativa
+
+    COMPOE: Tabela que armazena dados referentes a relação entre político e comissão
+    data_inicio: campo que armazena a data inicial a qual o político ingressou a comissão
+    data_fim: campo que armazena a data final a qual o político não faz mais parte da comissão
+
+    PARTICIPA: Tabela que armazena dados referentes a relação entre político e partido
+    data_inicio: campo que armazena a data inicial a qual o político ingressou ao partido
+    data_fim: campo que armazena a data final a qual o político não faz mais parte do partido
+
+    ASSUME: Tabela que armazena dados referentes a relação entre político e cargo
+    inicio: campo que armazena a data inicial a qual o político assumiu o cargo denominado
+    fim_mandato: campo que armazena a data final a qual o político encerrou o mandato para o cargo referente
 
 ### 6	MODELO LÓGICO<br>
 ![Alt text](https://github.com/higorcamposs/FeedPolitico/blob/master/images/ModeloLogico.png?raw=true "Modelo Conceitual")
