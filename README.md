@@ -39,7 +39,7 @@ O sistema proposto para o Feed Politico conterá as informacões aqui detalhadas
  
  
 #### 4.3 TABELA DE DADOS DO SISTEMA:    
-![Exemplo de Tabela de dados do Feed Politico](https://github.com/higorcamposs/FeedPolitico/blob/master/arquivos/tabela_registros_feedpolitico.xlsx?raw=true "Tabela - Feed Politico")
+![Exemplo de Tabela de dados do Feed Politico](https://github.com/higorcamposs/FeedPolitico/blob/master/arquivos/tabela_registros_feedpolitico_v2.xlsx?raw=true "Tabela - Feed Politico")
     
     
 ### 5.MODELO CONCEITUAL<br>            
