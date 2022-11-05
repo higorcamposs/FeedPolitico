@@ -41,10 +41,7 @@ O sistema proposto para o Feed Politico conterá as informacões aqui detalhadas
 
  
  
-#### 4.3 TABELA DE DADOS DO SISTEMA:
-    a) Esta tabela deve conter todos os atributos do sistema e um mínimo de 10 linhas/registros de dados.
-    b) Esta tabela tem a intenção de simular um relatório com todos os dados que serão armazenados 
-    
+#### 4.3 TABELA DE DADOS DO SISTEMA:    
 ![Exemplo de Tabela de dados do Feed Politico](https://github.com/higorcamposs/FeedPolitico/blob/master/arquivos/tabela_registros_feedpolitico.xlsx?raw=true "Tabela - Feed Politico")
     
     
