@@ -56,6 +56,9 @@ O sistema proposto para o Feed Politico conterá as informacões aqui detalhadas
     [Grupo02]: [Nomes dos que participaram na avaliação]
 
 #### 5.2 Descrição dos dados 
+    
+    
+    
     [objeto]: [descrição do objeto]
     
     EXEMPLO:
