@@ -35,7 +35,7 @@ O sistema proposto para o Feed Politico conterá as informacões aqui detalhadas
 * Relatório que mostre o tipo de proposta legislativa e a quantidade de clientes que a acompanham. 
 * Relatório que mostre as informações relacionadas a todos os políticos inseridos no sistema. O resultado deve conter identificador, nome, sexo, nome do cargo, nível do cargo, nome do partido que participa, início do mandato e fim do mandato.  
 * Relatório que mostre o nome e o tipo da proposta, e a média de aprovação por tipo. 
-* Relatório que mostre o nomde de cada político e identificador dos políticos que eles moderam.
+* Relatório que mostre o nome de cada político e identificador dos políticos que eles moderam.
  
  
 #### 4.3 TABELA DE DADOS DO SISTEMA:    
