@@ -34,7 +34,10 @@ O sistema proposto para o Feed Politico conterá as informacões aqui detalhadas
 * Informações sobre comissões, que devem conter participantes e se é temporária ou permanente;
 * Informações sobre a Câmara, que contém o nome do presidente da Câmara, nome dos vice-presidentes, nome dos secretários e suplentes de secretário, e quais partidos participam;
 * Informações sobre partidos. Os partidos devem conter nome, integrantes, fundador(es), descrição e ano que foi fundado.
-* Informações sobre a idade e o estado do cliente que está acompanhando determinada proposta legislativa. O cliente deve possuir os dados referentes ao seu endereço fisico, bem como sua data de nascimento. 
+* Informações sobre os clientes, bem como a média das idades que mais acompanham propostas políticas, principais estados, propostas legislativas mais acompanhadas, médias por acompanhamento de proposta e por político que propôs. 
+* Informações sobre tipo de propostas legislativas, como por exemplo a quantidade de propostas por tipo, média de aprovação daquele tipo de proposta, interesse dos clientes em acompanhar determinado tipo de proposta, interesse dos políticos em votar no tipo de proposta referente. 
+* Informações sobre as unidades federativas, quais possuem mais políticos, quantidade por tipo dos cargos, partidos predominantes, com mais políticos exercendo ou mais mandatos efetuados.
+ 
 
  
  
