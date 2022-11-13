@@ -117,17 +117,10 @@ O sistema proposto para o Feed Politico conterá as informacões aqui detalhadas
 ![Alt text](https://github.com/higorcamposs/FeedPolitico/blob/master/images/ModeloLogico.png?raw=true "Modelo Conceitual")
 
 ### 7	MODELO FÍSICO<br>
-
-
-
+![Alt text](https://github.com/higorcamposs/FeedPolitico/blob/master/arquivos/MODELO_FISICO.sql "Modelo Físico")
        
 ### 8	INSERT APLICADO NAS TABELAS DO BANCO DE DADOS<br>
-        a) inclusão das instruções de inserção dos dados nas tabelas criadas pelo script de modelo físico
-        (Drop para exclusão de tabelas + create definição de para tabelas e estruturas de dados + insert para dados a serem inseridos)
-        b) Criar um novo banco de dados para testar a restauracao 
-        (em caso de falha na restauração o grupo não pontuará neste quesito)
-        c) formato .SQL
-
+![Alt text](https://github.com/higorcamposs/FeedPolitico/blob/master/arquivos/CREATE_TABLE_AND_INSERT_DATA.sql "Insert aplicado")
 
 ### 9	TABELAS E PRINCIPAIS CONSULTAS<br>
     OBS: Incluir para cada tópico as instruções SQL + imagens (print da tela) mostrando os resultados.<br>
