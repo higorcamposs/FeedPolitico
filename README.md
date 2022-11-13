@@ -133,11 +133,13 @@ O sistema proposto para o Feed Politico conterá as informacões aqui detalhadas
    ![select-where](https://github.com/higorcamposs/FeedPolitico/blob/master/images/select-where-1.PNG)
     
     SELECT nome_cliente, nascimento_cliente FROM CLIENTE WHERE fk_cliente_uf_sigla='SP';
+   ![select-where](https://github.com/higorcamposs/FeedPolitico/blob/master/images/select-where-2.PNG)
     
     SELECT id_legislativo, resumo_legislativo FROM PROPOSTA_LEGISLATIVA WHERE status_legislativo='Aprovada';
+   ![select-where](https://github.com/higorcamposs/FeedPolitico/blob/master/images/select-where-3.PNG)
     
     SELECT nome_partido, ano_fundacao FROM PARTIDO WHERE extract(year FROM ano_fundacao)>1981;
-
+   ![select-where](https://github.com/higorcamposs/FeedPolitico/blob/master/images/select-where-4.PNG)
 
 #### 9.3	CONSULTAS QUE USAM OPERADORES LÓGICOS, ARITMÉTICOS E TABELAS OU CAMPOS RENOMEADOS (Mínimo 11)
     a) Criar 5 consultas que envolvam os operadores lógicos AND, OR e Not
