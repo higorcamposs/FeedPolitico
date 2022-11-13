@@ -130,6 +130,7 @@ O sistema proposto para o Feed Politico conterá as informacões aqui detalhadas
 
 #### 9.2	CONSULTAS DAS TABELAS COM FILTROS WHERE (Mínimo 4)
     SELECT * FROM POLITICO WHERE sexo_politico='F';
+    ![select-where](https://github.com/higorcamposs/FeedPolitico/blob/master/images/select-where-1.PNG)
     
     SELECT nome_cliente, nascimento_cliente FROM CLIENTE WHERE fk_cliente_uf_sigla='SP';
     
