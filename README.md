@@ -128,7 +128,16 @@ O sistema proposto para o Feed Politico conterá as informacões aqui detalhadas
 
 ># Marco de Entrega 01: Do item 1 até o item 9.1<br>
 
-#### 9.2	CONSULTAS DAS TABELAS COM FILTROS WHERE (Mínimo 4)<br>
+#### 9.2	CONSULTAS DAS TABELAS COM FILTROS WHERE (Mínimo 4)
+    SELECT * FROM POLITICO WHERE sexo_politico='F';
+    
+    SELECT nome_cliente, nascimento_cliente FROM CLIENTE WHERE fk_cliente_uf_sigla='SP';
+    
+    SELECT id_legislativo, resumo_legislativo FROM PROPOSTA_LEGISLATIVA WHERE status_legislativo='Aprovada';
+    
+    SELECT nome_partido, ano_fundacao FROM PARTIDO WHERE extract(year FROM ano_fundacao)>1981;
+
+
 #### 9.3	CONSULTAS QUE USAM OPERADORES LÓGICOS, ARITMÉTICOS E TABELAS OU CAMPOS RENOMEADOS (Mínimo 11)
     a) Criar 5 consultas que envolvam os operadores lógicos AND, OR e Not
     b) Criar no mínimo 3 consultas com operadores aritméticos 
