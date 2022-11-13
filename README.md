@@ -117,7 +117,7 @@ O sistema proposto para o Feed Politico conterá as informacões aqui detalhadas
 ![Modelo Lógico](https://github.com/higorcamposs/FeedPolitico/blob/master/images/ModeloLogico.png?raw=true "Modelo Logico")
 
 ### 7	MODELO FÍSICO<br>
-<a href=“[http://exemplo.com/](https://github.com/higorcamposs/FeedPolitico/blob/master/arquivos/MODELO_FISICO.sql)“>Modelo Físico</a>
+!Modelo Físico](https://github.com/higorcamposs/FeedPolitico/blob/master/arquivos/MODELO_FISICO.sql "Modelo Fisico")
        
 ### 8	INSERT APLICADO NAS TABELAS DO BANCO DE DADOS<br>
 ![Insert aplicado](https://github.com/higorcamposs/FeedPolitico/blob/master/arquivos/CREATE_TABLE_AND_INSERT_DATA.sql "Insert aplicado")
