@@ -114,13 +114,13 @@ O sistema proposto para o Feed Politico conterá as informacões aqui detalhadas
     fim_mandato: campo que armazena a data final a qual o político encerrou o mandato para o cargo referente
 
 ### 6	MODELO LÓGICO<br>
-![Alt text](https://github.com/higorcamposs/FeedPolitico/blob/master/images/ModeloLogico.png?raw=true "Modelo Conceitual")
+![Modelo Lógico](https://github.com/higorcamposs/FeedPolitico/blob/master/images/ModeloLogico.png?raw=true "Modelo Logico")
 
 ### 7	MODELO FÍSICO<br>
-![Alt text](https://github.com/higorcamposs/FeedPolitico/blob/master/arquivos/MODELO_FISICO.sql "Modelo Físico")
+![Modelo Físico](https://github.com/higorcamposs/FeedPolitico/blob/master/arquivos/MODELO_FISICO.sql "Modelo Fisico")
        
 ### 8	INSERT APLICADO NAS TABELAS DO BANCO DE DADOS<br>
-![Alt text](https://github.com/higorcamposs/FeedPolitico/blob/master/arquivos/CREATE_TABLE_AND_INSERT_DATA.sql "Insert aplicado")
+![Insert aplicado](https://github.com/higorcamposs/FeedPolitico/blob/master/arquivos/CREATE_TABLE_AND_INSERT_DATA.sql "Insert aplicado")
 
 ### 9	TABELAS E PRINCIPAIS CONSULTAS<br>
     OBS: Incluir para cada tópico as instruções SQL + imagens (print da tela) mostrando os resultados.<br>
