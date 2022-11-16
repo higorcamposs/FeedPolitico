@@ -144,23 +144,23 @@ O sistema proposto para o Feed Politico conterá as informacões aqui detalhadas
 #### 9.3	CONSULTAS QUE USAM OPERADORES LÓGICOS, ARITMÉTICOS E TABELAS OU CAMPOS RENOMEADOS (Mínimo 11)
     /*Consultar nome e email do cliente*/
     SELECT nome_cliente, email_cliente FROM CLIENTE;
-    ![consulta](https://github.com/higorcamposs/FeedPolitico/blob/master/images/consulta_nome_email_cliente.png)
+![consulta](https://github.com/higorcamposs/FeedPolitico/blob/master/images/consulta_nome_email_cliente.png)
 
     /*Consultar quais cargos são de nivel federal*/
     SELECT nome_cargo FROM cargo WHERE nivel_cargo = 'Federal';
-    ![consulta](https://github.com/higorcamposs/FeedPolitico/blob/master/images/consulta_cargo_federal.png)
+![consulta](https://github.com/higorcamposs/FeedPolitico/blob/master/images/consulta_cargo_federal.png)
 
     /*Consultar o nome da proposta e data de inicio de sua discussão*/
     SELECT fk_discute_proposta_legislativa_id, data_inicio FROM discutida ORDER BY data_inicio;
-    ![consulta](https://github.com/higorcamposs/FeedPolitico/blob/master/images/consulta_nome_proposta_datainicio_discutida.png)
+![consulta](https://github.com/higorcamposs/FeedPolitico/blob/master/images/consulta_nome_proposta_datainicio_discutida.png)
 
     /*Consultar a sigla do estado e o nome*/
     SELECT * FROM uf;
-    ![consulta](https://github.com/higorcamposs/FeedPolitico/blob/master/images/consulta_uf.png)
+![consulta](https://github.com/higorcamposs/FeedPolitico/blob/master/images/consulta_uf.png)
 
     /*Consultar os clientes que nasceram depois de 2000*/
     SELECT nome_cliente, nascimento_cliente FROM cliente WHERE nascimento_cliente > '2000-01-01';
-    ![consulta](https://github.com/higorcamposs/FeedPolitico/blob/master/images/consulta_clientes_nasceram_depois_2000.png)
+![consulta](https://github.com/higorcamposs/FeedPolitico/blob/master/images/consulta_clientes_nasceram_depois_2000.png)
 
 #### 9.4	CONSULTAS QUE USAM OPERADORES LIKE E DATAS (Mínimo 12) <br>
     a) Criar outras 5 consultas que envolvam like ou ilike
