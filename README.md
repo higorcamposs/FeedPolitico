@@ -164,57 +164,10 @@ O sistema proposto para o Feed Politico conterá as informacões aqui detalhadas
 
 #### 9.4	CONSULTAS QUE USAM OPERADORES LIKE E DATAS (Mínimo 12) <br>
     a) Criar outras 5 consultas que envolvam like ou ilike
-     /*Consultar propostas aprovadas que fizeram algum tipo de alteração*/
-    SELECT P.id_legislativo AS "Proposta", P.resumo_legislativo AS "Resumo", T.descricao_proposta AS "Tipo" FROM PROPOSTA_LEGISLATIVA AS P
-        INNER JOIN TIPO_PROPOSTA AS T
-            ON P.FK_PL_TIPO_PROPOSTA_id = T.id_proposta
-    WHERE P.status_legislativo = 'Aprovada' AND P.resumo_legislativo LIKE 'Altera%'
-![consulta](https://github.com/higorcamposs/FeedPolitico/blob/master/images/select-like-1.png)
-
-    /*Consultar politicos moderados pelo moderador com nome Ciro*/
-    SELECT MDR.nome_politico AS "Moderador", POL.nome_politico AS "Moderado"  FROM MODERA AS MD
-	    INNER JOIN POLITICO AS MDR
-		    ON MD.FK_MODERA_POLITICO_id = MDR.id_politico
-	    INNER JOIN POLITICO AS POL
-		    ON MD.FK_MODERADO_POLITICO_id = POL.id_politico
-	WHERE MDR.nome_politico LIKE '%Ciro%'
-![consulta](https://github.com/higorcamposs/FeedPolitico/blob/master/images/select-like-2.png)
-
-    /*Consultar propostas votadas pelo político Geraldo*/
-    SELECT	VOTAR.FK_VOTO_PROPOSTA_LEGISLATIVA_id AS "Proposta Votada", 
-			P.resumo_legislativo AS "Resumo", 
-			POL.nome_politico AS "Politico", 
-			T.descricao_voto AS "Voto"
-	FROM VOTA_PROPOSTA_LEGISLATIVA AS VOTAR
-		INNER JOIN PROPOSTA_LEGISLATIVA AS P
-			ON VOTAR.FK_VOTO_PROPOSTA_LEGISLATIVA_id = P.id_legislativo
-		INNER JOIN POLITICO AS POL
-			ON VOTAR.FK_VOTO_POLITICO_id = POL.id_politico
-		INNER JOIN TIPO_VOTO AS T
-			ON VOTAR.FK_VOTO_TIPO_VOTO_id = T.id_tipo_voto
-	WHERE POL.nome_politico LIKE '%Geraldo%'
-![consulta](https://github.com/higorcamposs/FeedPolitico/blob/master/images/select-like-3.png)
-
-     /*Consultar Políticos que fazem parte das Comissões que tratam de segurança*/
-	SELECT CMS.nome_comissao, P.nome_politico FROM COMPOE AS C
-		INNER JOIN COMISSAO AS CMS
-			ON C.FK_COMPOE_COMISSAO_id = CMS.id_comissao
-		INNER JOIN POLITICO AS P
-			ON C.FK_COMPOE_POLITICO_id = P.id_politico
-	WHERE CMS.nome_comissao LIKE '%Segurança%'
-
-![consulta](https://github.com/higorcamposs/FeedPolitico/blob/master/images/select-like-4.png)
-
-     /*Consultar Quantidade de usuários seguindo propostas de 2021*/
-	SELECT COUNT(*) AS [Quantidade], FK_ACOMPANHA_PROPOSTA_LEGISLATIVA_id AS “Propostas” FROM ACOMPANHA
-	WHERE FK_ACOMPANHA_PROPOSTA_LEGISLATIVA_id LIKE '%2021%'
-	GROUP BY FK_ACOMPANHA_PROPOSTA_LEGISLATIVA_id
-
-![consulta](https://github.com/higorcamposs/FeedPolitico/blob/master/images/select-like-5.png)
-    
     b) Criar uma consulta para cada tipo de função data apresentada.
 
 #### 9.5	INSTRUÇÕES APLICANDO ATUALIZAÇÃO E EXCLUSÃO DE DADOS (Mínimo 6)<br>
+    a) Criar minimo 3 de exclusão
     DELETE FROM MODERA WHERE extract(year FROM fim_moderacao)<2010;
    ![select-where](https://github.com/higorcamposs/FeedPolitico/blob/master/images/delete-1.PNG)
     
@@ -224,6 +177,7 @@ O sistema proposto para o Feed Politico conterá as informacões aqui detalhadas
     DELETE FROM ASSUME WHERE fk_assume_cargo_id='2004'AND extract(year FROM inicio_mandato)>=2008;
    ![select-where](https://github.com/higorcamposs/FeedPolitico/blob/master/images/delete-3.PNG)
 
+    b) Criar minimo 3 de atualização
     UPDATE POLITICO SET fk_politico_uf_sigla='SP' WHERE id_politico='600';
    ![select-where](https://github.com/higorcamposs/FeedPolitico/blob/master/images/update-1.PNG)
     
@@ -240,12 +194,14 @@ O sistema proposto para o Feed Politico conterá as informacões aqui detalhadas
     INNER JOIN assume ON politico.id_politico = assume.fk_assume_politico_id
     INNER JOIN cargo ON cargo.id_cargo = assume.fk_assume_cargo_id
     ORDER BY inicio_mandato;  
+![ordenada](https://github.com/higorcamposs/FeedPolitico/blob/master/images/nomePolitico_nomeCargo_iniFimMandato.png)
 
     /*Nome do cliente, ordenado por ordem alfabetica, e qual proposta acompanha*/
     SELECT nome_cliente, fk_acompanha_proposta_legislativa_id
     FROM cliente
     INNER JOIN acompanha ON cliente.id_cliente = acompanha.fk_acompanha_cliente_id
     ORDER BY nome_cliente;
+![ordenada](https://github.com/higorcamposs/FeedPolitico/blob/master/images/nomeClienteOrdenado_propostaAcompanha.png)    
 
     /*Nome do politico, ordenado por ordem alfabetica, e comissão que ele compoe*/
     SELECT nome_politico, nome_comissao
@@ -253,6 +209,7 @@ O sistema proposto para o Feed Politico conterá as informacões aqui detalhadas
     INNER JOIN compoe ON politico.id_politico = compoe.fk_compoe_politico_id
     INNER JOIN comissao ON compoe.fk_compoe_comissao_id = comissao.id_comissao
     ORDER BY compoe_data_inicio;
+![ordenada](https://github.com/higorcamposs/FeedPolitico/blob/master/images/nomePoliticoOrdenado_compoeComissao.png)    
 
     /*Nome do politico que votou em alguma proposta legislativa, nome da proposta, ordenada por ordem alfabetica, e o tipo do voto*/
     SELECT nome_politico, fk_voto_proposta_legislativa_id, descricao_voto
@@ -260,6 +217,7 @@ O sistema proposto para o Feed Politico conterá as informacões aqui detalhadas
     INNER JOIN vota_proposta_legislativa ON politico.id_politico = vota_proposta_legislativa.fk_voto_politico_id
     INNER JOIN tipo_voto ON vota_proposta_legislativa.fk_voto_tipo_voto_id = tipo_voto.id_tipo_voto
     ORDER BY fk_voto_proposta_legislativa_id;
+![ordenada](https://github.com/higorcamposs/FeedPolitico/blob/master/images/nomePolitico_voto_nomePropostaOrdenada_tipoVoto.png)    
 
     /*Nome do politico e do partido, ordenado por ordem alfabetica, inicio, em ordem do mais antigo para mais novo, e fim da participação*/
     SELECT nome_politico, nome_partido, participa_data_inicio, participa_data_fim
@@ -267,6 +225,7 @@ O sistema proposto para o Feed Politico conterá as informacões aqui detalhadas
     INNER JOIN participa ON politico.id_politico = participa.fk_participa_politico_id
     INNER JOIN partido ON partido.numero_partido = participa.fk_participa_partido_id
     ORDER BY nome_partido, participa_data_inicio;
+![ordenada](https://github.com/higorcamposs/FeedPolitico/blob/master/images/nomePolitico_nomePartidoOrdenado_iniFim.png)
 #### 9.7	CONSULTAS COM GROUP BY E FUNÇÕES DE AGRUPAMENTO (Mínimo 6)<br>
     a) Criar minimo 2 envolvendo algum tipo de junção
 
@@ -319,17 +278,8 @@ O sistema proposto para o Feed Politico conterá as informacões aqui detalhadas
     ORDER BY nascimento_cliente;
 
 #### 9.10	SUBCONSULTAS (Mínimo 4)<br>
-     SELECT POL.nome_politico AS "Politico", COUNT(*) AS "Votos em Propostas não aprovadas" FROM VOTA_PROPOSTA_LEGISLATIVA AS V INNER JOIN PROPOSTA_LEGISLATIVA AS P ON V.FK_VOTO_PROPOSTA_LEGISLATIVA_id = P.id_legislativo INNER JOIN POLITICO AS POL ON  V.FK_VOTO_POLITICO_id = POL.id_politico WHERE V.FK_VOTO_PROPOSTA_LEGISLATIVA_id IN (SELECT id_legislativo FROM PROPOSTA_LEGISLATIVA WHERE status_legislativo <> 'Aprovada') GROUP BY V.FK_VOTO_POLITICO_id, POL.nome_politico
-  ![select-where](https://github.com/higorcamposs/FeedPolitico/blob/master/images/subconsultas-1.PNG)
-     
-     SELECT P.id_legislativo	 AS "Proposta Legislativa", P.resumo_legislativo AS "Resumo", P.status_legislativo AS "Aprovada?", POL.nome_politico AS "Politico", TV.descricao_voto AS "Voto" FROM VOTA_PROPOSTA_LEGISLATIVA AS V INNER JOIN PROPOSTA_LEGISLATIVA AS P ON V.FK_VOTO_PROPOSTA_LEGISLATIVA_id = P.id_legislativo INNER JOIN POLITICO AS POL ON V.FK_VOTO_POLITICO_id = POL.id_politico INNER JOIN TIPO_VOTO AS TV ON V.FK_VOTO_TIPO_VOTO_id = TV.id_tipo_voto WHERE P.id_legislativo IN (SELECT id_legislativo FROM PROPOSTA_LEGISLATIVA INNER JOIN TIPO_PROPOSTA ON FK_PL_TIPO_PROPOSTA_id = id_proposta WHERE descricao_proposta = 'PEC - Proposta de Emenda à Constituição')
-   ![select-where](https://github.com/higorcamposs/FeedPolitico/blob/master/images/subconsultas-2.PNG)
-   
-    SELECT P.nome_politico AS "Politico", P.sexo_politico AS "Sexo", P.FK_POLITICO_UF_sigla	AS "Estado que representa" FROM COMPOE AS C INNER JOIN POLITICO AS P ON C.FK_COMPOE_POLITICO_id = P.id_politico WHERE C.FK_COMPOE_COMISSAO_id IN (SELECT id_comissao FROM COMISSAO WHERE periodo_comissao = 'Permanente') AND C.compoe_data_inicio < '2009-01-01' AND C.compoer_data_fim > '2009-01-01'
-   ![select-where](https://github.com/higorcamposs/FeedPolitico/blob/master/images/subconsultas-3.PNG)
-   
-    SELECT D.FK_DISCUTE_PROPOSTA_LEGISLATIVA_id AS "Proposta", P.resumo_legislativo AS "Resumo" FROM DISCUTIDA AS D INNER JOIN PROPOSTA_LEGISLATIVA AS P ON D.FK_DISCUTE_PROPOSTA_LEGISLATIVA_id = P.id_legislativo WHERE FK_DISCUTE_COMISSAO_id IN (SELECT id_comissao FROM COMISSAO WHERE periodo_comissao = 'Permanente') AND data_inicio < '2018-04-01' AND data_fim > '2018-04-01'
-   ![select-where](https://github.com/higorcamposs/FeedPolitico/blob/master/images/subconsultas-4.PNG)
+     a) Criar minimo 1 envolvendo GROUP BY
+     b) Criar minimo 1 envolvendo algum tipo de junção
 
 ># Marco de Entrega 02: Do item 9.2 até o ítem 9.10<br>
 
