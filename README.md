@@ -167,7 +167,6 @@ O sistema proposto para o Feed Politico conterá as informacões aqui detalhadas
     b) Criar uma consulta para cada tipo de função data apresentada.
 
 #### 9.5	INSTRUÇÕES APLICANDO ATUALIZAÇÃO E EXCLUSÃO DE DADOS (Mínimo 6)<br>
-    a) Criar minimo 3 de exclusão
     DELETE FROM MODERA WHERE extract(year FROM fim_moderacao)<2010;
    ![select-where](https://github.com/higorcamposs/FeedPolitico/blob/master/images/delete-1.PNG)
     
@@ -177,7 +176,6 @@ O sistema proposto para o Feed Politico conterá as informacões aqui detalhadas
     DELETE FROM ASSUME WHERE fk_assume_cargo_id='2004'AND extract(year FROM inicio_mandato)>=2008;
    ![select-where](https://github.com/higorcamposs/FeedPolitico/blob/master/images/delete-3.PNG)
 
-    b) Criar minimo 3 de atualização
     UPDATE POLITICO SET fk_politico_uf_sigla='SP' WHERE id_politico='600';
    ![select-where](https://github.com/higorcamposs/FeedPolitico/blob/master/images/update-1.PNG)
     
