@@ -142,15 +142,32 @@ O sistema proposto para o Feed Politico conterá as informacões aqui detalhadas
    ![select-where](https://github.com/higorcamposs/FeedPolitico/blob/master/images/select-where-4.PNG)
 
 #### 9.3	CONSULTAS QUE USAM OPERADORES LÓGICOS, ARITMÉTICOS E TABELAS OU CAMPOS RENOMEADOS (Mínimo 11)
-    a) Criar 5 consultas que envolvam os operadores lógicos AND, OR e Not
-    b) Criar no mínimo 3 consultas com operadores aritméticos 
-    c) Criar no mínimo 3 consultas com operação de renomear nomes de campos ou tabelas
+    /*Consultar nome e email do cliente*/
+    SELECT nome_cliente, email_cliente FROM CLIENTE;
+    ![consulta](https://github.com/higorcamposs/FeedPolitico/blob/master/images/consulta_nome_email_cliente.png)
+
+    /*Consultar quais cargos são de nivel federal*/
+    SELECT nome_cargo FROM cargo WHERE nivel_cargo = 'Federal';
+    ![consulta](https://github.com/higorcamposs/FeedPolitico/blob/master/images/consulta_cargo_federal.png)
+
+    /*Consultar o nome da proposta e data de inicio de sua discussão*/
+    SELECT fk_discute_proposta_legislativa_id, data_inicio FROM discutida ORDER BY data_inicio;
+    ![consulta](https://github.com/higorcamposs/FeedPolitico/blob/master/images/consulta_nome_proposta_datainicio_discutida.png)
+
+    /*Consultar a sigla do estado e o nome*/
+    SELECT * FROM uf;
+    ![consulta](https://github.com/higorcamposs/FeedPolitico/blob/master/images/consulta_uf.png)
+
+    /*Consultar os clientes que nasceram depois de 2000*/
+    SELECT nome_cliente, nascimento_cliente FROM cliente WHERE nascimento_cliente > '2000-01-01';
+    ![consulta](https://github.com/higorcamposs/FeedPolitico/blob/master/images/consulta_clientes_nasceram_depois_2000.png)
 
 #### 9.4	CONSULTAS QUE USAM OPERADORES LIKE E DATAS (Mínimo 12) <br>
     a) Criar outras 5 consultas que envolvam like ou ilike
     b) Criar uma consulta para cada tipo de função data apresentada.
 
 #### 9.5	INSTRUÇÕES APLICANDO ATUALIZAÇÃO E EXCLUSÃO DE DADOS (Mínimo 6)<br>
+    a) Criar minimo 3 de exclusão
     DELETE FROM MODERA WHERE extract(year FROM fim_moderacao)<2010;
    ![select-where](https://github.com/higorcamposs/FeedPolitico/blob/master/images/delete-1.PNG)
     
@@ -159,7 +176,8 @@ O sistema proposto para o Feed Politico conterá as informacões aqui detalhadas
     
     DELETE FROM ASSUME WHERE fk_assume_cargo_id='2004'AND extract(year FROM inicio_mandato)>=2008;
    ![select-where](https://github.com/higorcamposs/FeedPolitico/blob/master/images/delete-3.PNG)
-   
+
+    b) Criar minimo 3 de atualização
     UPDATE POLITICO SET fk_politico_uf_sigla='SP' WHERE id_politico='600';
    ![select-where](https://github.com/higorcamposs/FeedPolitico/blob/master/images/update-1.PNG)
     
@@ -177,25 +195,14 @@ O sistema proposto para o Feed Politico conterá as informacões aqui detalhadas
     a) Criar minimo 2 envolvendo algum tipo de junção
 
 #### 9.8	CONSULTAS COM LEFT, RIGHT E FULL JOIN (Mínimo 4)<br>
-    SELECT id_politico, nome_politico, fk_moderado_politico_id FROM POLITICO LEFT OUTER JOIN MODERA ON (MODERA.fk_modera_politico_id = POLITICO.id_politico);
-   ![select-where](https://github.com/higorcamposs/FeedPolitico/blob/master/images/select-left.PNG)
-    
-    SELECT id_legislativo, resumo_legislativo, descricao_proposta FROM PROPOSTA_LEGISLATIVA RIGHT OUTER JOIN TIPO_PROPOSTA ON (PROPOSTA_LEGISLATIVA.fk_pl_tipo_proposta_id = TIPO_PROPOSTA.id_proposta);
-   ![select-where](https://github.com/higorcamposs/FeedPolitico/blob/master/images/select-right.PNG)
-    
-    SELECT fk_cliente_uf_sigla, nome_uf FROM CLIENTE FULL OUTER JOIN UF ON (CLIENTE.fk_cliente_uf_sigla = UF.sigla);
-   ![select-where](https://github.com/higorcamposs/FeedPolitico/blob/master/images/select-full.PNG)
-    
-    SELECT nome_cliente, fk_acompanha_proposta_legislativa_id FROM CLIENTE FULL OUTER JOIN ACOMPANHA ON (CLIENTE.id_cliente = ACOMPANHA.fk_acompanha_cliente_id);
-   ![select-where](https://github.com/higorcamposs/FeedPolitico/blob/master/images/select-full-2.PNG)
+    a) Criar minimo 1 de cada tipo
 
 #### 9.9	CONSULTAS COM SELF JOIN E VIEW (Mínimo 6)<br>
         a) Uma junção que envolva Self Join (caso não ocorra na base justificar e substituir por uma view)
         b) Outras junções com views que o grupo considere como sendo de relevante importância para o trabalho
 
 #### 9.10	SUBCONSULTAS (Mínimo 4)<br>
-     SELECT POL.nome_politico AS "Politico", COUNT(*) AS "Votos em Propostas não aprovadas" FROM VOTA_PROPOSTA_LEGISLATIVA AS V INNER JOIN PROPOSTA_LEGISLATIVA AS P ON V.FK_VOTO_PROPOSTA_LEGISLATIVA_id = P.id_legislativo INNER JOIN POLITICO AS POL ON  V.FK_VOTO_POLITICO_id = POL.id_politico WHERE V.FK_VOTO_PROPOSTA_LEGISLATIVA_id IN (SELECT id_legislativo FROM PROPOSTA_LEGISLATIVA WHERE status_legislativo <> 'Aprovada') GROUP BY V.FK_VOTO_POLITICO_id, POL.nome_politico
-
+     a) Criar minimo 1 envolvendo GROUP BY
      b) Criar minimo 1 envolvendo algum tipo de junção
 
 ># Marco de Entrega 02: Do item 9.2 até o ítem 9.10<br>
