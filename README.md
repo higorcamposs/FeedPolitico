@@ -371,7 +371,17 @@ O sistema proposto para o Feed Politico conterá as informacões aqui detalhadas
 
 
 #### 9.8	CONSULTAS COM LEFT, RIGHT E FULL JOIN (Mínimo 4)<br>
-    a) Criar minimo 1 de cada tipo
+    SELECT id_politico, nome_politico, fk_moderado_politico_id FROM POLITICO LEFT OUTER JOIN MODERA ON (MODERA.fk_modera_politico_id = POLITICO.id_politico);
+   ![select-where](https://github.com/higorcamposs/FeedPolitico/blob/master/images/select-left.PNG)
+    
+    SELECT id_legislativo, resumo_legislativo, descricao_proposta FROM PROPOSTA_LEGISLATIVA RIGHT OUTER JOIN TIPO_PROPOSTA ON (PROPOSTA_LEGISLATIVA.fk_pl_tipo_proposta_id = TIPO_PROPOSTA.id_proposta);
+   ![select-where](https://github.com/higorcamposs/FeedPolitico/blob/master/images/select-right.PNG)
+    
+    SELECT fk_cliente_uf_sigla, nome_uf FROM CLIENTE FULL OUTER JOIN UF ON (CLIENTE.fk_cliente_uf_sigla = UF.sigla);
+   ![select-where](https://github.com/higorcamposs/FeedPolitico/blob/master/images/select-full.PNG)
+    
+    SELECT nome_cliente, fk_acompanha_proposta_legislativa_id FROM CLIENTE FULL OUTER JOIN ACOMPANHA ON (CLIENTE.id_cliente = ACOMPANHA.fk_acompanha_cliente_id);
+   ![select-where](https://github.com/higorcamposs/FeedPolitico/blob/master/images/select-full-2.PNG)
 
 #### 9.9	CONSULTAS COM SELF JOIN E VIEW (Mínimo 6)<br>
     /*Verificar quais clientes são do ES*/
