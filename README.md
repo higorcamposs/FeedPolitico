@@ -237,6 +237,9 @@ O sistema proposto para o Feed Politico conterá as informacões aqui detalhadas
     CREATE VIEW cliente_do_ES as
     SELECT nome_cliente FROM cliente
     WHERE fk_cliente_uf_sigla = 'ES';
+    
+    SELECT * FROM cliente_do_ES;
+![verifica](https://github.com/higorcamposs/FeedPolitico/blob/master/images/cliente_do_es.png)    
 
     /*Verificar quais politicos são do PT*/
     CREATE VIEW politico_do_PT as
@@ -245,6 +248,10 @@ O sistema proposto para o Feed Politico conterá as informacões aqui detalhadas
     INNER JOIN participa ON politico.id_politico = participa.fk_participa_politico_id
     INNER JOIN partido ON partido.numero_partido = participa.fk_participa_partido_id
     WHERE nome_partido = 'PT';
+    
+    SELECT * FROM politico_do_PT;
+![verifica](https://github.com/higorcamposs/FeedPolitico/blob/master/images/politico_do_PT.png)
+    
 
     /*Verificar quais politicos são Senador*/
     CREATE VIEW politicos_senadores as
@@ -253,6 +260,9 @@ O sistema proposto para o Feed Politico conterá as informacões aqui detalhadas
     INNER JOIN assume ON politico.id_politico = assume.fk_assume_politico_id
     INNER JOIN cargo ON cargo.id_cargo = assume.fk_assume_cargo_id
     WHERE nome_cargo = 'Senador';
+    
+    SELECT * FROM politicos_senadores;
+![verifica](https://github.com/higorcamposs/FeedPolitico/blob/master/images/politicos_senadores.png)
 
     /*Verificar o nome do politico e o voto para a proposta: MPV36/2008*/
     CREATE VIEW politico_voto_MPV362008 as
@@ -261,6 +271,9 @@ O sistema proposto para o Feed Politico conterá as informacões aqui detalhadas
     INNER JOIN vota_proposta_legislativa ON politico.id_politico = vota_proposta_legislativa.fk_voto_politico_id
     INNER JOIN tipo_voto ON vota_proposta_legislativa.fk_voto_tipo_voto_id = tipo_voto.id_tipo_voto
     WHERE fk_voto_proposta_legislativa_id = 'MPV36/2008';
+    
+    SELECT * FROM politico_voto_MPV362008;
+![verifica](https://github.com/higorcamposs/FeedPolitico/blob/master/images/politico_voto_MPV362008.png)
 
     /*Verificar quais politicos compoem a Comissão de Transportes e Comunicações*/
     CREATE VIEW politico_compoe_CTC as
@@ -269,6 +282,9 @@ O sistema proposto para o Feed Politico conterá as informacões aqui detalhadas
     INNER JOIN compoe ON politico.id_politico = compoe.fk_compoe_politico_id
     INNER JOIN comissao ON compoe.fk_compoe_comissao_id = comissao.id_comissao
     WHERE nome_comissao = 'Comissão de Transportes e Comunicações';
+    
+    SELECT * FROM politico_compoe_CTC;
+![verifica](https://github.com/higorcamposs/FeedPolitico/blob/master/images/politico_compoe_CTC.png)
 
     /*Verificar os clientes que nasceram depois de 1990*/
     CREATE VIEW cliente_acima_1990 as
@@ -277,6 +293,9 @@ O sistema proposto para o Feed Politico conterá as informacões aqui detalhadas
     WHERE nascimento_cliente > '1990-01-01' 
     ORDER BY nascimento_cliente;
 
+    SELECT * FROM cliente_acima_1990;
+![verifica](https://github.com/higorcamposs/FeedPolitico/blob/master/images/cliente_acima_1990;.png)
+ 
 #### 9.10	SUBCONSULTAS (Mínimo 4)<br>
      a) Criar minimo 1 envolvendo GROUP BY
      b) Criar minimo 1 envolvendo algum tipo de junção
