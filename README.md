@@ -294,7 +294,7 @@ O sistema proposto para o Feed Politico conterá as informacões aqui detalhadas
     ORDER BY nascimento_cliente;
 
     SELECT * FROM cliente_acima_1990;
-![verifica](https://github.com/higorcamposs/FeedPolitico/blob/master/images/cliente_acima_1990;.png)
+![verifica](https://github.com/higorcamposs/FeedPolitico/blob/master/images/cliente_acima_1990.png)
  
 #### 9.10	SUBCONSULTAS (Mínimo 4)<br>
      a) Criar minimo 1 envolvendo GROUP BY
