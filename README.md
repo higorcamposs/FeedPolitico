@@ -152,7 +152,24 @@ O sistema proposto para o Feed Politico conterá as informacões aqui detalhadas
 
 #### 9.5	INSTRUÇÕES APLICANDO ATUALIZAÇÃO E EXCLUSÃO DE DADOS (Mínimo 6)<br>
     a) Criar minimo 3 de exclusão
+    DELETE FROM MODERA WHERE extract(year FROM fim_moderacao)<2010;
+   ![select-where](https://github.com/higorcamposs/FeedPolitico/blob/master/images/delete-1.PNG)
+    
+    DELETE FROM VOTA_PROPOSTA_LEGISLATIVA WHERE fk_voto_tipo_voto_id='803';
+   ![select-where](https://github.com/higorcamposs/FeedPolitico/blob/master/images/delete-2.PNG)
+    
+    DELETE FROM ASSUME WHERE fk_assume_cargo_id='2004'AND extract(year FROM inicio_mandato)>=2008;
+   ![select-where](https://github.com/higorcamposs/FeedPolitico/blob/master/images/delete-3.PNG)
+
     b) Criar minimo 3 de atualização
+    UPDATE POLITICO SET fk_politico_uf_sigla='SP' WHERE id_politico='600';
+   ![select-where](https://github.com/higorcamposs/FeedPolitico/blob/master/images/update-1.PNG)
+    
+    UPDATE PARTIDO SET nome_partido='Novo', descricao_partido='Partido Novo' WHERE numero_partido=19;
+   ![select-where](https://github.com/higorcamposs/FeedPolitico/blob/master/images/update-2.PNG)
+    
+    UPDATE COMISSAO SET periodo_comissao='Permanente' WHERE id_comissao='107';
+   ![select-where](https://github.com/higorcamposs/FeedPolitico/blob/master/images/update-3.PNG)
 
 #### 9.6	CONSULTAS COM INNER JOIN E ORDER BY (Mínimo 6)<br>
     a) Uma junção que envolva todas as tabelas possuindo no mínimo 2 registros no resultado
