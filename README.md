@@ -164,7 +164,98 @@ O sistema proposto para o Feed Politico conterá as informacões aqui detalhadas
 
 #### 9.4	CONSULTAS QUE USAM OPERADORES LIKE E DATAS (Mínimo 12) <br>
     a) Criar outras 5 consultas que envolvam like ou ilike
-    b) Criar uma consulta para cada tipo de função data apresentada.
+     /*Consultar propostas aprovadas que fizeram algum tipo de alteração*/
+    SELECT P.id_legislativo AS "Proposta", P.resumo_legislativo AS "Resumo", T.descricao_proposta AS "Tipo" FROM PROPOSTA_LEGISLATIVA AS P
+        INNER JOIN TIPO_PROPOSTA AS T
+            ON P.FK_PL_TIPO_PROPOSTA_id = T.id_proposta
+    WHERE P.status_legislativo = 'Aprovada' AND P.resumo_legislativo LIKE 'Altera%'
+![consulta](https://github.com/higorcamposs/FeedPolitico/blob/master/images/select-like-1.png)
+
+    /*Consultar politicos moderados pelo moderador com nome Ciro*/
+    SELECT MDR.nome_politico AS "Moderador", POL.nome_politico AS "Moderado"  FROM MODERA AS MD
+	    INNER JOIN POLITICO AS MDR
+		    ON MD.FK_MODERA_POLITICO_id = MDR.id_politico
+	    INNER JOIN POLITICO AS POL
+		    ON MD.FK_MODERADO_POLITICO_id = POL.id_politico
+	WHERE MDR.nome_politico LIKE '%Ciro%'
+![consulta](https://github.com/higorcamposs/FeedPolitico/blob/master/images/select-like-2.png)
+
+    /*Consultar propostas votadas pelo político Geraldo*/
+    SELECT	VOTAR.FK_VOTO_PROPOSTA_LEGISLATIVA_id AS "Proposta Votada", 
+			P.resumo_legislativo AS "Resumo", 
+			POL.nome_politico AS "Politico", 
+			T.descricao_voto AS "Voto"
+	FROM VOTA_PROPOSTA_LEGISLATIVA AS VOTAR
+		INNER JOIN PROPOSTA_LEGISLATIVA AS P
+			ON VOTAR.FK_VOTO_PROPOSTA_LEGISLATIVA_id = P.id_legislativo
+		INNER JOIN POLITICO AS POL
+			ON VOTAR.FK_VOTO_POLITICO_id = POL.id_politico
+		INNER JOIN TIPO_VOTO AS T
+			ON VOTAR.FK_VOTO_TIPO_VOTO_id = T.id_tipo_voto
+	WHERE POL.nome_politico LIKE '%Geraldo%'
+![consulta](https://github.com/higorcamposs/FeedPolitico/blob/master/images/select-like-3.png)
+
+     /*Consultar Políticos que fazem parte das Comissões que tratam de segurança*/
+	SELECT CMS.nome_comissao, P.nome_politico FROM COMPOE AS C
+		INNER JOIN COMISSAO AS CMS
+			ON C.FK_COMPOE_COMISSAO_id = CMS.id_comissao
+		INNER JOIN POLITICO AS P
+			ON C.FK_COMPOE_POLITICO_id = P.id_politico
+	WHERE CMS.nome_comissao LIKE '%Segurança%'
+
+![consulta](https://github.com/higorcamposs/FeedPolitico/blob/master/images/select-like-4.png)
+
+     /*Consultar Quantidade de usuários seguindo propostas de 2021*/
+	SELECT COUNT(*) AS [Quantidade], FK_ACOMPANHA_PROPOSTA_LEGISLATIVA_id AS “Propostas” FROM ACOMPANHA
+	WHERE FK_ACOMPANHA_PROPOSTA_LEGISLATIVA_id LIKE '%2021%'
+	GROUP BY FK_ACOMPANHA_PROPOSTA_LEGISLATIVA_id
+
+![consulta](https://github.com/higorcamposs/FeedPolitico/blob/master/images/select-like-5.png)    
+
+     b) Criar uma consulta para cada tipo de função data apresentada.
+     /*Consultar tempo em dias desde que a última proposta foi seguida*/
+	SELECT (current_date - data_acompanha) AS "Dias desde que a ultima proposta foi seguida" FROM ACOMPANHA
+	ORDER BY data_acompanha DESC
+	LIMIT 1
+
+![consulta](https://github.com/higorcamposs/FeedPolitico/blob/master/images/select-data-1.png)
+
+     /*Consultar idade dos usuários que seguem propostas do ES*/
+	SELECT nome_cliente AS "Nome", age(nascimento_cliente) AS "Idade", FK_CLIENTE_UF_sigla AS "Estado que segue" FROM CLIENTE
+	WHERE FK_CLIENTE_UF_sigla = 'ES'
+
+![consulta](https://github.com/higorcamposs/FeedPolitico/blob/master/images/select-data-2.png)
+
+     /*Consultar idade dos usuários que seguem propostas do ES*/
+	SELECT nome_cliente AS "Nome", (to_char(date_part('year',age(nascimento_cliente)),'99') || ' anos') AS "Idade",FK_CLIENTE_UF_sigla AS "Estado que segue" FROM CLIENTE
+	WHERE FK_CLIENTE_UF_sigla = 'ES'
+
+![consulta](https://github.com/higorcamposs/FeedPolitico/blob/master/images/select-data-3.png)
+
+     /*Consultar o tempo de atividade dos partidos que existem atualmente*/
+	SELECT nome_partido AS "Sigla", descricao_partido AS "Nome", ((extract('year' from current_date)) - (extract('year' from ano_fundacao))) AS "Anos ativo" FROM PARTIDO
+	WHERE ((extract('year' from current_date)) - (extract('year' from ano_fundacao))) > 10
+	ORDER BY nome_partido
+
+![consulta](https://github.com/higorcamposs/FeedPolitico/blob/master/images/select-data-4.png)
+
+     /*Consultar tempo exato desde que os políticos registrados assumiram um cargo em nível Federal*/
+	SELECT C.nome_cargo AS "Cargo assumido", C.nivel_cargo as "Nivel do cargo", P.nome_politico as "Nome", (now() - (A.inicio_mandato)) AS "Tempo desde que assumiu o cargo" FROM ASSUME AS A
+		INNER JOIN CARGO AS C
+			ON A.FK_ASSUME_CARGO_id = C.id_cargo
+		INNER JOIN POLITICO AS P
+			ON A.FK_ASSUME_POLITICO_id = P.id_politico
+	WHERE C.nivel_cargo = 'Federal'
+
+![consulta](https://github.com/higorcamposs/FeedPolitico/blob/master/images/select-data-5.png)
+
+     /*Consultar tempo desde o fim do mandato como Presidente da Câmara dos Moderadores cadastrados*/
+	SELECT P.nome_politico AS "Nome", (now() - (date_trunc('day', M.fim_moderacao) + '23:59:59')) AS "Tempo desde o fim do mandato como Presidente da Câmara" FROM MODERA AS M
+		INNER JOIN POLITICO AS P
+			ON M.FK_MODERA_POLITICO_id = P.id_politico
+	ORDER BY "Tempo desde o fim do mandato como Presidente da Câmara"
+
+![consulta](https://github.com/higorcamposs/FeedPolitico/blob/master/images/select-data-6.png)
 
 #### 9.5	INSTRUÇÕES APLICANDO ATUALIZAÇÃO E EXCLUSÃO DE DADOS (Mínimo 6)<br>
     a) Criar minimo 3 de exclusão
