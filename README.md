@@ -438,8 +438,17 @@ O sistema proposto para o Feed Politico conterá as informacões aqui detalhadas
 ![verifica](https://github.com/higorcamposs/FeedPolitico/blob/master/images/cliente_acima_1990.png)
  
 #### 9.10	SUBCONSULTAS (Mínimo 4)<br>
-     a) Criar minimo 1 envolvendo GROUP BY
-     b) Criar minimo 1 envolvendo algum tipo de junção
+     SELECT POL.nome_politico AS "Politico", COUNT(*) AS "Votos em Propostas não aprovadas" FROM VOTA_PROPOSTA_LEGISLATIVA AS V INNER JOIN PROPOSTA_LEGISLATIVA AS P ON V.FK_VOTO_PROPOSTA_LEGISLATIVA_id = P.id_legislativo INNER JOIN POLITICO AS POL ON  V.FK_VOTO_POLITICO_id = POL.id_politico WHERE V.FK_VOTO_PROPOSTA_LEGISLATIVA_id IN (SELECT id_legislativo FROM PROPOSTA_LEGISLATIVA WHERE status_legislativo <> 'Aprovada') GROUP BY V.FK_VOTO_POLITICO_id, POL.nome_politico
+  ![select-where](https://github.com/higorcamposs/FeedPolitico/blob/master/images/subconsultas-1.PNG)
+     
+     SELECT P.id_legislativo	 AS "Proposta Legislativa", P.resumo_legislativo AS "Resumo", P.status_legislativo AS "Aprovada?", POL.nome_politico AS "Politico", TV.descricao_voto AS "Voto" FROM VOTA_PROPOSTA_LEGISLATIVA AS V INNER JOIN PROPOSTA_LEGISLATIVA AS P ON V.FK_VOTO_PROPOSTA_LEGISLATIVA_id = P.id_legislativo INNER JOIN POLITICO AS POL ON V.FK_VOTO_POLITICO_id = POL.id_politico INNER JOIN TIPO_VOTO AS TV ON V.FK_VOTO_TIPO_VOTO_id = TV.id_tipo_voto WHERE P.id_legislativo IN (SELECT id_legislativo FROM PROPOSTA_LEGISLATIVA INNER JOIN TIPO_PROPOSTA ON FK_PL_TIPO_PROPOSTA_id = id_proposta WHERE descricao_proposta = 'PEC - Proposta de Emenda à Constituição')
+   ![select-where](https://github.com/higorcamposs/FeedPolitico/blob/master/images/subconsultas-2.PNG)
+   
+    SELECT P.nome_politico AS "Politico", P.sexo_politico AS "Sexo", P.FK_POLITICO_UF_sigla	AS "Estado que representa" FROM COMPOE AS C INNER JOIN POLITICO AS P ON C.FK_COMPOE_POLITICO_id = P.id_politico WHERE C.FK_COMPOE_COMISSAO_id IN (SELECT id_comissao FROM COMISSAO WHERE periodo_comissao = 'Permanente') AND C.compoe_data_inicio < '2009-01-01' AND C.compoer_data_fim > '2009-01-01'
+   ![select-where](https://github.com/higorcamposs/FeedPolitico/blob/master/images/subconsultas-3.PNG)
+   
+    SELECT D.FK_DISCUTE_PROPOSTA_LEGISLATIVA_id AS "Proposta", P.resumo_legislativo AS "Resumo" FROM DISCUTIDA AS D INNER JOIN PROPOSTA_LEGISLATIVA AS P ON D.FK_DISCUTE_PROPOSTA_LEGISLATIVA_id = P.id_legislativo WHERE FK_DISCUTE_COMISSAO_id IN (SELECT id_comissao FROM COMISSAO WHERE periodo_comissao = 'Permanente') AND data_inicio < '2018-04-01' AND data_fim > '2018-04-01'
+   ![select-where](https://github.com/higorcamposs/FeedPolitico/blob/master/images/subconsultas-4.PNG)
 
 ># Marco de Entrega 02: Do item 9.2 até o ítem 9.10<br>
 
