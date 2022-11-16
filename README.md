@@ -188,9 +188,39 @@ O sistema proposto para o Feed Politico conterá as informacões aqui detalhadas
    ![select-where](https://github.com/higorcamposs/FeedPolitico/blob/master/images/update-3.PNG)
 
 #### 9.6	CONSULTAS COM INNER JOIN E ORDER BY (Mínimo 6)<br>
-    a) Uma junção que envolva todas as tabelas possuindo no mínimo 2 registros no resultado
-    b) Outras junções que o grupo considere como sendo as de principal importância para o trabalho
+    /*Nome do politico, Nome do cargo, Inicio e Fim do mandato, ordenado em ordem ascendente do inicio do mandato*/
+    SELECT nome_politico, nome_cargo, inicio_mandato, fim_mandato
+    FROM politico 
+    INNER JOIN assume ON politico.id_politico = assume.fk_assume_politico_id
+    INNER JOIN cargo ON cargo.id_cargo = assume.fk_assume_cargo_id
+    ORDER BY inicio_mandato;  
 
+    /*Nome do cliente, ordenado por ordem alfabetica, e qual proposta acompanha*/
+    SELECT nome_cliente, fk_acompanha_proposta_legislativa_id
+    FROM cliente
+    INNER JOIN acompanha ON cliente.id_cliente = acompanha.fk_acompanha_cliente_id
+    ORDER BY nome_cliente;
+
+    /*Nome do politico, ordenado por ordem alfabetica, e comissão que ele compoe*/
+    SELECT nome_politico, nome_comissao
+    FROM politico
+    INNER JOIN compoe ON politico.id_politico = compoe.fk_compoe_politico_id
+    INNER JOIN comissao ON compoe.fk_compoe_comissao_id = comissao.id_comissao
+    ORDER BY compoe_data_inicio;
+
+    /*Nome do politico que votou em alguma proposta legislativa, nome da proposta, ordenada por ordem alfabetica, e o tipo do voto*/
+    SELECT nome_politico, fk_voto_proposta_legislativa_id, descricao_voto
+    FROM politico
+    INNER JOIN vota_proposta_legislativa ON politico.id_politico = vota_proposta_legislativa.fk_voto_politico_id
+    INNER JOIN tipo_voto ON vota_proposta_legislativa.fk_voto_tipo_voto_id = tipo_voto.id_tipo_voto
+    ORDER BY fk_voto_proposta_legislativa_id;
+
+    /*Nome do politico e do partido, ordenado por ordem alfabetica, inicio, em ordem do mais antigo para mais novo, e fim da participação*/
+    SELECT nome_politico, nome_partido, participa_data_inicio, participa_data_fim
+    FROM politico
+    INNER JOIN participa ON politico.id_politico = participa.fk_participa_politico_id
+    INNER JOIN partido ON partido.numero_partido = participa.fk_participa_partido_id
+    ORDER BY nome_partido, participa_data_inicio;
 #### 9.7	CONSULTAS COM GROUP BY E FUNÇÕES DE AGRUPAMENTO (Mínimo 6)<br>
     a) Criar minimo 2 envolvendo algum tipo de junção
 
@@ -198,8 +228,49 @@ O sistema proposto para o Feed Politico conterá as informacões aqui detalhadas
     a) Criar minimo 1 de cada tipo
 
 #### 9.9	CONSULTAS COM SELF JOIN E VIEW (Mínimo 6)<br>
-        a) Uma junção que envolva Self Join (caso não ocorra na base justificar e substituir por uma view)
-        b) Outras junções com views que o grupo considere como sendo de relevante importância para o trabalho
+    /*Verificar quais clientes são do ES*/
+    CREATE VIEW cliente_do_ES as
+    SELECT nome_cliente FROM cliente
+    WHERE fk_cliente_uf_sigla = 'ES';
+
+    /*Verificar quais politicos são do PT*/
+    CREATE VIEW politico_do_PT as
+    SELECT nome_politico, nome_partido
+    FROM politico
+    INNER JOIN participa ON politico.id_politico = participa.fk_participa_politico_id
+    INNER JOIN partido ON partido.numero_partido = participa.fk_participa_partido_id
+    WHERE nome_partido = 'PT';
+
+    /*Verificar quais politicos são Senador*/
+    CREATE VIEW politicos_senadores as
+    SELECT nome_politico, nome_cargo
+    FROM politico 
+    INNER JOIN assume ON politico.id_politico = assume.fk_assume_politico_id
+    INNER JOIN cargo ON cargo.id_cargo = assume.fk_assume_cargo_id
+    WHERE nome_cargo = 'Senador';
+
+    /*Verificar o nome do politico e o voto para a proposta: MPV36/2008*/
+    CREATE VIEW politico_voto_MPV362008 as
+    SELECT nome_politico, fk_voto_proposta_legislativa_id, descricao_voto
+    FROM politico
+    INNER JOIN vota_proposta_legislativa ON politico.id_politico = vota_proposta_legislativa.fk_voto_politico_id
+    INNER JOIN tipo_voto ON vota_proposta_legislativa.fk_voto_tipo_voto_id = tipo_voto.id_tipo_voto
+    WHERE fk_voto_proposta_legislativa_id = 'MPV36/2008';
+
+    /*Verificar quais politicos compoem a Comissão de Transportes e Comunicações*/
+    CREATE VIEW politico_compoe_CTC as
+    SELECT nome_politico, nome_comissao
+    FROM politico
+    INNER JOIN compoe ON politico.id_politico = compoe.fk_compoe_politico_id
+    INNER JOIN comissao ON compoe.fk_compoe_comissao_id = comissao.id_comissao
+    WHERE nome_comissao = 'Comissão de Transportes e Comunicações';
+
+    /*Verificar os clientes que nasceram depois de 1990*/
+    CREATE VIEW cliente_acima_1990 as
+    SELECT nome_cliente, nascimento_cliente 
+    FROM cliente 
+    WHERE nascimento_cliente > '1990-01-01' 
+    ORDER BY nascimento_cliente;
 
 #### 9.10	SUBCONSULTAS (Mínimo 4)<br>
      a) Criar minimo 1 envolvendo GROUP BY
