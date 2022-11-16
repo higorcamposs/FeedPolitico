@@ -318,7 +318,57 @@ O sistema proposto para o Feed Politico conterá as informacões aqui detalhadas
     ORDER BY nome_partido, participa_data_inicio;
 ![ordenada](https://github.com/higorcamposs/FeedPolitico/blob/master/images/nomePolitico_nomePartidoOrdenado_iniFim.png)
 #### 9.7	CONSULTAS COM GROUP BY E FUNÇÕES DE AGRUPAMENTO (Mínimo 6)<br>
-    a) Criar minimo 2 envolvendo algum tipo de junção
+    
+    /*Quantidade de usuários acompanhando as propostas*/
+    SELECT A.FK_ACOMPANHA_PROPOSTA_LEGISLATIVA_id AS "Código da Proposta", P.resumo_legislativo, COUNT(*) AS "Quantidade de usuários acompanhando" FROM ACOMPANHA AS A
+	INNER JOIN PROPOSTA_LEGISLATIVA AS P
+	    ON A.FK_ACOMPANHA_PROPOSTA_LEGISLATIVA_id = P.id_legislativo
+    GROUP BY A.FK_ACOMPANHA_PROPOSTA_LEGISLATIVA_id, P.resumo_legislativo
+    ORDER BY "Quantidade de usuários acompanhando" DESC
+![consulta](https://github.com/higorcamposs/FeedPolitico/blob/master/images/select-group-1.png)
+
+    /*Quantidade de propostas por tipo*/
+    SELECT T.descricao_proposta AS "Tipo da Proposta", COUNT(*) AS "Quantidade de propostas desse tipo" FROM PROPOSTA_LEGISLATIVA AS P
+	INNER JOIN TIPO_PROPOSTA AS T
+		ON P.FK_PL_TIPO_PROPOSTA_id = T.id_proposta
+    GROUP BY P.FK_PL_TIPO_PROPOSTA_id, T.descricao_proposta
+
+![consulta](https://github.com/higorcamposs/FeedPolitico/blob/master/images/select-group-2.png)
+
+    /*Quantidade de Políticos por sexo*/
+    SELECT sexo_politico AS "Sexo", count(*) AS "Quantidade de Politicos" FROM POLITICO
+    GROUP BY sexo_politico
+
+![consulta](https://github.com/higorcamposs/FeedPolitico/blob/master/images/select-group-3.png)
+
+    /*Quantidade de Políticos que representam cada estado*/
+    SELECT P.FK_POLITICO_UF_sigla AS "Sigla", UF.nome_uf AS "Nome do Estado", count(*) AS "Quantidade de Politicos que o representam" FROM POLITICO AS P
+	INNER JOIN UF
+		ON UF.sigla = P.FK_POLITICO_UF_sigla
+    GROUP BY P.FK_POLITICO_UF_sigla, UF.nome_uf
+
+![consulta](https://github.com/higorcamposs/FeedPolitico/blob/master/images/select-group-4.png)
+
+    /*Quantidade de propostas votadas por tipo*/
+    SELECT T.descricao_proposta AS "Tipo de Proposta Legislativa", COUNT (*) AS "Quantidade votada" FROM PROPOSTA_LEGISLATIVA AS P
+	INNER JOIN TIPO_PROPOSTA AS T
+		ON P.FK_PL_TIPO_PROPOSTA_id = T.id_proposta
+	LEFT JOIN VOTA_PROPOSTA_LEGISLATIVA AS V
+		ON V.FK_VOTO_PROPOSTA_LEGISLATIVA_id = P.id_legislativo
+    WHERE V.FK_VOTO_PROPOSTA_LEGISLATIVA_id IS NOT NULL
+    GROUP BY T.descricao_proposta
+
+![consulta](https://github.com/higorcamposs/FeedPolitico/blob/master/images/select-group-5.png)
+
+    /*Quantidade de usuários acompanhando as propostas*/
+    SELECT PAR.FK_PARTICIPA_PARTIDO_id AS "Numero do Partido", P.descricao_partido "Nome do Partido", 
+    COUNT(*) AS "Quantidade de participantes" FROM PARTICIPA AS PAR
+	INNER JOIN PARTIDO AS P
+		ON PAR.FK_PARTICIPA_PARTIDO_id = P.numero_partido
+    GROUP BY PAR.FK_PARTICIPA_PARTIDO_id, P.descricao_partido
+
+![consulta](https://github.com/higorcamposs/FeedPolitico/blob/master/images/select-group-6.png)
+
 
 #### 9.8	CONSULTAS COM LEFT, RIGHT E FULL JOIN (Mínimo 4)<br>
     a) Criar minimo 1 de cada tipo
