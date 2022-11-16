@@ -250,7 +250,7 @@ O sistema proposto para o Feed Politico conterá as informacões aqui detalhadas
     WHERE nome_partido = 'PT';
     
     SELECT * FROM politico_do_PT;
-![verifica](https://github.com/higorcamposs/FeedPolitico/blob/master/images/politico_do_PT.png)
+![verifica](https://github.com/higorcamposs/FeedPolitico/blob/master/images/politico_do_pt.png)
     
 
     /*Verificar quais politicos são Senador*/
@@ -262,7 +262,7 @@ O sistema proposto para o Feed Politico conterá as informacões aqui detalhadas
     WHERE nome_cargo = 'Senador';
     
     SELECT * FROM politicos_senadores;
-![verifica](https://github.com/higorcamposs/FeedPolitico/blob/master/images/politicos_senadores.png)
+![verifica](https://github.com/higorcamposs/FeedPolitico/blob/master/images/politico_senador.png)
 
     /*Verificar o nome do politico e o voto para a proposta: MPV36/2008*/
     CREATE VIEW politico_voto_MPV362008 as
