@@ -151,7 +151,6 @@ O sistema proposto para o Feed Politico conterá as informacões aqui detalhadas
     b) Criar uma consulta para cada tipo de função data apresentada.
 
 #### 9.5	INSTRUÇÕES APLICANDO ATUALIZAÇÃO E EXCLUSÃO DE DADOS (Mínimo 6)<br>
-    a) Criar minimo 3 de exclusão
     DELETE FROM MODERA WHERE extract(year FROM fim_moderacao)<2010;
    ![select-where](https://github.com/higorcamposs/FeedPolitico/blob/master/images/delete-1.PNG)
     
@@ -160,8 +159,7 @@ O sistema proposto para o Feed Politico conterá as informacões aqui detalhadas
     
     DELETE FROM ASSUME WHERE fk_assume_cargo_id='2004'AND extract(year FROM inicio_mandato)>=2008;
    ![select-where](https://github.com/higorcamposs/FeedPolitico/blob/master/images/delete-3.PNG)
-
-    b) Criar minimo 3 de atualização
+   
     UPDATE POLITICO SET fk_politico_uf_sigla='SP' WHERE id_politico='600';
    ![select-where](https://github.com/higorcamposs/FeedPolitico/blob/master/images/update-1.PNG)
     
@@ -179,7 +177,17 @@ O sistema proposto para o Feed Politico conterá as informacões aqui detalhadas
     a) Criar minimo 2 envolvendo algum tipo de junção
 
 #### 9.8	CONSULTAS COM LEFT, RIGHT E FULL JOIN (Mínimo 4)<br>
-    a) Criar minimo 1 de cada tipo
+    SELECT id_politico, nome_politico, fk_moderado_politico_id FROM POLITICO LEFT OUTER JOIN MODERA ON (MODERA.fk_modera_politico_id = POLITICO.id_politico);
+   ![select-where](https://github.com/higorcamposs/FeedPolitico/blob/master/images/select-left.PNG)
+    
+    SELECT id_legislativo, resumo_legislativo, descricao_proposta FROM PROPOSTA_LEGISLATIVA RIGHT OUTER JOIN TIPO_PROPOSTA ON (PROPOSTA_LEGISLATIVA.fk_pl_tipo_proposta_id = TIPO_PROPOSTA.id_proposta);
+   ![select-where](https://github.com/higorcamposs/FeedPolitico/blob/master/images/select-right.PNG)
+    
+    SELECT fk_cliente_uf_sigla, nome_uf FROM CLIENTE FULL OUTER JOIN UF ON (CLIENTE.fk_cliente_uf_sigla = UF.sigla);
+   ![select-where](https://github.com/higorcamposs/FeedPolitico/blob/master/images/select-full.PNG)
+    
+    SELECT nome_cliente, fk_acompanha_proposta_legislativa_id FROM CLIENTE FULL OUTER JOIN ACOMPANHA ON (CLIENTE.id_cliente = ACOMPANHA.fk_acompanha_cliente_id);
+   ![select-where](https://github.com/higorcamposs/FeedPolitico/blob/master/images/select-full-2.PNG)
 
 #### 9.9	CONSULTAS COM SELF JOIN E VIEW (Mínimo 6)<br>
         a) Uma junção que envolva Self Join (caso não ocorra na base justificar e substituir por uma view)
