@@ -468,17 +468,33 @@ O sistema proposto para o Feed Politico conterá as informacões aqui detalhadas
     
     /*Relatório que mostre o nome de cada partido e a quantidade de políticos do sexo feminino por partido.*/
     SELECT 
-	PAR.numero_partido AS "Numero Partido", 
-	PAR.nome_partido AS "Sigla Partido", 
-	PAR.descricao_partido AS "Nome Partido", 
-	COUNT(*) AS "Quantidade" 
-			FROM PARTICIPA AS P
-	INNER JOIN PARTIDO AS PAR
-		ON P.FK_PARTICIPA_PARTIDO_id = PAR.numero_partido
-	INNER JOIN POLITICO AS POL
-		ON P.FK_PARTICIPA_POLITICO_id = POL.id_politico
-    WHERE POL.sexo_politico = 'F'
-    GROUP BY PAR.numero_partido, PAR.nome_partido, PAR.descricao_partido, POL.sexo_politico
+			PAR.numero_partido AS "Numero Partido", 
+			PAR.nome_partido AS "Sigla Partido", 
+			PAR.descricao_partido AS "Nome Partido", 
+			COUNT(*) AS "Quantidade" 
+		FROM PARTICIPA AS P
+			INNER JOIN PARTIDO AS PAR
+				ON P.FK_PARTICIPA_PARTIDO_id = PAR.numero_partido
+			INNER JOIN POLITICO AS POL
+				ON P.FK_PARTICIPA_POLITICO_id = POL.id_politico
+	WHERE POL.sexo_politico = 'F'
+	GROUP BY PAR.numero_partido, PAR.nome_partido, PAR.descricao_partido, POL.sexo_politico
+	
+	
+    /*Relatório que mostre o tipo de proposta legislativa e a quantidade de clientes que a acompanham.*/
+    SELECT 
+			TP.descricao_proposta AS "Tipo proposta", 
+			COUNT(*) AS "Quantidade de pessoas seguindo a proposta" 
+		FROM PROPOSTA_LEGISLATIVA AS PL
+			INNER JOIN TIPO_PROPOSTA AS TP
+				ON PL.FK_PL_TIPO_PROPOSTA_id = TP.id_proposta
+			INNER JOIN ACOMPANHA AS A
+				ON PL.id_legislativo = A.FK_ACOMPANHA_PROPOSTA_LEGISLATIVA_id	
+	GROUP BY TP.descricao_proposta
+	ORDER BY TP.descricao_proposta
+    
+    /*Relatório que mostre as informações relacionadas a todos os políticos inseridos no sistema. O resultado deve conter identificador, nome, sexo, nome do cargo, nível do cargo, nome do partido que participa, início do mandato e fim do mandato.*/
+    
     
 #### b) link com exemplo de relatórios será disponiblizado pelo professor no AVA
 #### OBS: Esta é uma atividade de grande relevância no contexto do trabalho. Mantenha o foco nos 5 principais relatórios/resultados visando obter o melhor resultado possível.
