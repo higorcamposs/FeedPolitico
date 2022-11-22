@@ -494,6 +494,25 @@ O sistema proposto para o Feed Politico conterá as informacões aqui detalhadas
 	ORDER BY TP.descricao_proposta
     
     /*Relatório que mostre as informações relacionadas a todos os políticos inseridos no sistema. O resultado deve conter identificador, nome, sexo, nome do cargo, nível do cargo, nome do partido que participa, início do mandato e fim do mandato.*/
+	SELECT 
+			POL.id_politico AS "Identificador do politico", 
+			POL.nome_politico AS "Nome do politico", 
+			POL.sexo_politico AS "Sexo", 
+			P.descricao_partido AS "Nome do partido", 
+			C.nome_cargo AS "Cargo exercido", 
+			C.nivel_cargo AS "Nivel do cargo", 
+			A.inicio_mandato AS "Inicio do mandato", 
+			A.fim_mandato AS "Fim do mandato"
+		FROM POLITICO AS POL
+			INNER JOIN PARTICIPA AS PAR
+				ON POL.id_politico = PAR.FK_PARTICIPA_POLITICO_id
+			INNER JOIN PARTIDO AS P
+				ON PAR.FK_PARTICIPA_PARTIDO_id = P.numero_partido
+			INNER JOIN ASSUME AS A
+				ON POL.id_politico = A.FK_ASSUME_POLITICO_id
+			INNER JOIN CARGO AS C
+				ON A.FK_ASSUME_CARGO_id = C.id_cargo
+		ORDER BY C.nivel_cargo DESC, POL.id_politico
     
     
 #### b) link com exemplo de relatórios será disponiblizado pelo professor no AVA
