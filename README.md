@@ -465,6 +465,21 @@ O sistema proposto para o Feed Politico conterá as informacões aqui detalhadas
 ### 10 RELATÓRIOS E GRÁFICOS
 
 #### a) análises e resultados provenientes do banco de dados desenvolvido (usar modelo disponível)
+    
+    /*Relatório que mostre o nome de cada partido e a quantidade de políticos do sexo feminino por partido.*/
+    SELECT 
+	PAR.numero_partido AS "Numero Partido", 
+	PAR.nome_partido AS "Sigla Partido", 
+	PAR.descricao_partido AS "Nome Partido", 
+	COUNT(*) AS "Quantidade" 
+			FROM PARTICIPA AS P
+	INNER JOIN PARTIDO AS PAR
+		ON P.FK_PARTICIPA_PARTIDO_id = PAR.numero_partido
+	INNER JOIN POLITICO AS POL
+		ON P.FK_PARTICIPA_POLITICO_id = POL.id_politico
+    WHERE POL.sexo_politico = 'F'
+    GROUP BY PAR.numero_partido, PAR.nome_partido, PAR.descricao_partido, POL.sexo_politico
+    
 #### b) link com exemplo de relatórios será disponiblizado pelo professor no AVA
 #### OBS: Esta é uma atividade de grande relevância no contexto do trabalho. Mantenha o foco nos 5 principais relatórios/resultados visando obter o melhor resultado possível.
 
