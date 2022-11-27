@@ -1174,14 +1174,21 @@ O sistema proposto para o Feed Politico conterá as informacões aqui detalhadas
     
     
 #### b) link com exemplo de relatórios será disponiblizado pelo professor no AVA
-#### OBS: Esta é uma atividade de grande relevância no contexto do trabalho. Mantenha o foco nos 5 principais relatórios/resultados visando obter o melhor resultado possível.
 
+* Para acessar os relatórios clique <a href="https://colab.research.google.com/drive/1tZq_HNLlhntpsMNuFGwFJsXOUsAzaOJd?usp=sharing">aqui</a>.
     
 
 ### 11	AJUSTES DA DOCUMENTAÇÃO, CRIAÇÃO DOS SLIDES E VÍDEO PARA APRESENTAÇAO FINAL <br>
 
 #### a) Modelo (pecha kucha)<br>
+
+* Para acessar o modelo dos slides clique <a href="https://docs.google.com/presentation/d/1fGjdjghpm4F33-hkrG2iVQDBiRuIhHonHDEpO4DGdAQ/edit?usp=sharing">aqui</a>.
+
+
 #### b) Tempo de apresentação 6:40 
+
+* Para acessar a apresentação do grupo em video clique <a href="https://drive.google.com/file/d/1Axto4Tbt944omIQT-CtK-oTYrFw0WB-g/view?usp=sharing">aqui</a>.
+
 
 ># Marco de Entrega 03: Itens 10 e 11<br>
 <br>
